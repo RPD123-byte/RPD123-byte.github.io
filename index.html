@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --background-color: #ecf0f1;
+            --text-color: #333;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-bottom: 2rem;
+        }
+        h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        .grid-item {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+        .grid-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+        .grid-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        .grid-item-content {
+            padding: 20px;
+        }
+        .grid-item h2 {
+            margin-top: 0;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+        .grid-item p {
+            margin-bottom: 15px;
+            color: var(--text-color);
+        }
+        .grid-item a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .grid-item a:hover {
+            color: var(--accent-color);
+        }
+        @media (max-width: 768px) {
+            .grid-container {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+        }
+        @media (max-width: 480px) {
+            .grid-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>My Portfolio</h1>
+        </div>
+    </header>
+    <main class="container">
+        <div class="grid-container">
+            <!-- Ramvisor Code -->
+            <div class="grid-item">
+                <img src="images/ramvisor.png" alt="Ramvisor Code">
+                <div class="grid-item-content">
+                    <h2>Ramvisor Code</h2>
+                    <p>AI-powered assistant for UNC course registration, integrating full-stack technologies to provide comprehensive answers about course catalogs and registration processes.</p>
+                    <a href="https://github.com/RPD123-byte/Ramvisor_Code">View Project</a>
+                </div>
+            </div>
+
+            <!-- Soccer Bot -->
+            <div class="grid-item">
+                <img src="images/soccer_bot.png" alt="Soccer Bot">
+                <div class="grid-item-content">
+                    <h2>Soccer Bot</h2>
+                    <p>An automated bot for soccer-related tasks and analysis, enhancing data processing and insights in the world of soccer.</p>
+                    <a href="https://github.com/RPD123-byte/Soccer_Bot">View Project</a>
+                </div>
+            </div>
+
+            <!-- Research with Human-Level Intelligence -->
+            <div class="grid-item">
+                <img src="images/aif.png" alt="Research with Human-Level Intelligence">
+                <div class="grid-item-content">
+                    <h2>Active Inference Framework</h2>
+                    <p>Implements an active inference framework for optimizing research processes across industries, demonstrating continuous learning and adaptation in complex environments.</p>
+                    <a href="https://github.com/RPD123-byte/Research_with_Human_Level_Intelligence">View Project</a>
+                </div>
+            </div>
+
+            <!-- Agent Agent -->
+            <div class="grid-item">
+                <img src="images/tool_generator.png" alt="Agent Agent">
+                <div class="grid-item-content">
+                    <h2>Tool Generator Agent</h2>
+                    <p>An AI system that automates the creation, testing, and deployment of function-calling tools for Large Language Models, featuring real-time error correction and a knowledge base with similarity search.</p>
+                    <a href="https://github.com/RPD123-byte/Agent_Agent">View Project</a>
+                </div>
+            </div>
+
+            <!-- Marketing Agent -->
+            <div class="grid-item">
+                <img src="images/marketing_agent.png" alt="Marketing Agent">
+                <div class="grid-item-content">
+                    <h2>Marketing Strategy Generator</h2>
+                    <p>AI-powered tool that generates ranked, tailored marketing strategies for businesses, utilizing advanced AI reflection and industry research to provide specific, actionable suggestions.</p>
+                    <a href="https://github.com/RPD123-byte/marketing_agent">View Project</a>
+                </div>
+            </div>
+
+            <!-- Intelligent Query Processor -->
+            <div class="grid-item">
+                <img src="images/iqp.png" alt="Intelligent Query Processor">
+                <div class="grid-item-content">
+                    <h2>Intelligent Query Processor</h2>
+                    <p>Cutting-edge solution leveraging an agentic framework to convert natural language requests into highly accurate database queries, achieving a 99% success rate with complex, multi-hop queries.</p>
+                    <a href="https://github.com/RPD123-byte/intelligent_query_processor">View Project</a>
+                </div>
+            </div>
+
+            <!-- Sentiment-Driven Portfolio Optimization -->
+            <div class="grid-item">
+                <img src="images/sde.png" alt="Sentiment-Driven Portfolio Optimization">
+                <div class="grid-item-content">
+                    <h2>Neural SDE Portfolio Optimizer</h2>
+                    <p>Innovative stock portfolio optimization strategy using Neural Stochastic Differential Equations and fine-tuned sentiment analysis, demonstrated during the 2008 financial crisis.</p>
+                    <a href="https://github.com/RPD123-byte/Sentiment-Driven-Portfolio-Optimization-Using-Neural-Stochastic-Differential-Equations-A-Case-Study">View Project</a>
+                </div>
+            </div>
+
+            <!-- PersonaForge -->
+            <div class="grid-item">
+                <img src="images/persona.png" alt="PersonaForge">
+                <div class="grid-item-content">
+                    <h2>PersonaForge</h2>
+                    <p>Comprehensive pipeline for creating fine-tuned AI models mimicking online personalities, combining embeddings and fine-tuning for accurate voice replication and knowledge base extraction.</p>
+                    <a href="https://github.com/RPD123-byte/PersonaForge-AI-Driven-Public-Figure-Voice-Emulation">View Project</a>
+                </div>
+            </div>
+
+            <!-- RegimeX -->
+            <div class="grid-item">
+                <img src="images/clustering.png" alt="RegimeX">
+                <div class="grid-item-content">
+                    <h2>RegimeX</h2>
+                    <p>Novel approach to algorithmic trading using semi-supervised learning, combining clustering techniques to identify market regimes with XGBoost Regressors for adaptive trading strategies.</p>
+                    <a href="https://github.com/RPD123-byte/RegimeX-Adaptive-Financial-Forecasting-through-Clustered-Regime-Modeling">View Project</a>
+                </div>
+            </div>
+
+            <!-- Palm Berries Auto-Purchasing Bot (Private Project) -->
+            <div class="grid-item">
+                <img src="images/palm_berry.png" alt="Palm Berries Auto-Purchasing Bot">
+                <div class="grid-item-content">
+                    <h2>Palm Berries Auto-Purchasing Bot</h2>
+                    <p>Advanced automation tool for inventory purchasing, integrating with Google Sheets and using Selenium for web scraping and autonomous purchasing, featuring comprehensive error handling and secure authentication.</p>
+                    <a href="palm-berries.html">View Details</a>
+                </div>
+            </div>
+
+            <!-- Lexal AI Website -->
+            <div class="grid-item">
+                <img src="images/lexal.jpg" alt="Lexal AI Website">
+                <div class="grid-item-content">
+                    <h2>Lexal AI Website</h2>
+                    <p>Developed a comprehensive website for Lexal AI, featuring a full frontend and backend architecture. Implemented secure authentication using JWT and Google Auth, integrated a PostgreSQL database, and Stripe for payments. The site includes a multifunctional dashboard and is supported by a robust CI/CD pipeline.</p>
+                    <a href="https://lexalai.com/">Visit Website</a>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
