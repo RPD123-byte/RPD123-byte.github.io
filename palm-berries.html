@@ -4,74 +4,218 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Palm Berries Auto-Purchasing Bot</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2c3e50;
+            --accent-color: #f39c12;
+            --background-color: #f0f3f5;
+            --card-color: #ffffff;
+            --text-color: #333333;
+            --shadow-color: rgba(0, 0, 0, 0.1);
+            --hover-color-light: #e67e22;
+            --hover-color-dark: #f1c40f;
+        }
+
+        .dark-mode {
+            --primary-color: #3498db;
+            --secondary-color: #34495e;
+            --accent-color: #f1c40f;
+            --background-color: #1a1a1a;
+            --card-color: #2c2c2c;
+            --text-color: #f0f0f0;
+            --shadow-color: rgba(255, 255, 255, 0.1);
+        }
+
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Poppins', sans-serif;
             line-height: 1.6;
-            color: #333;
-            max-width: 800px;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .container {
+            max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
-            background-color: #f4f4f4;
         }
+
+        header {
+            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+            color: white;
+            padding: 3rem 0;
+            margin-bottom: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header-title {
+            font-size: 3rem;
+            font-weight: 600;
+            margin: 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header-subtitle {
+            font-size: 1.2rem;
+            margin-top: 0.5rem;
+            opacity: 0.8;
+            text-align: center;
+            max-width: 80%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .header-decoration {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            z-index: 0;
+        }
+
+        .header-decoration.left {
+            top: -150px;
+            left: -150px;
+        }
+
+        .header-decoration.right {
+            bottom: -150px;
+            right: -150px;
+        }
+
+        .content {
+            background-color: var(--card-color);
+            border-radius: 15px;
+            box-shadow: 0 10px 20px var(--shadow-color);
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+
         h1, h2 {
-            color: #2c3e50;
+            color: var(--primary-color);
         }
-        .container {
-            background-color: white;
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
+
         .back-link {
             display: inline-block;
             margin-top: 20px;
-            color: #3498db;
+            color: var(--primary-color);
             text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease-in-out;
         }
+
         .back-link:hover {
-            text-decoration: underline;
+            color: var(--hover-color-light);
+        }
+
+        .dark-mode .back-link:hover {
+            color: var(--hover-color-dark);
+        }
+
+        @media (max-width: 768px) {
+            .header-title {
+                font-size: 2.5rem;
+            }
+
+            .header-subtitle {
+                font-size: 1rem;
+                max-width: 90%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header-title {
+                font-size: 2rem;
+            }
+
+            .header-subtitle {
+                font-size: 0.9rem;
+                max-width: 95%;
+            }
         }
     </style>
 </head>
 <body>
+    <header>
+        <div class="header-decoration left"></div>
+        <div class="header-decoration right"></div>
+        <div class="header-content">
+            <h1 class="header-title">Palm Berries Auto-Purchasing Bot</h1>
+            <p class="header-subtitle">Advanced Automation for Inventory Management</p>
+        </div>
+    </header>
+    
     <div class="container">
-        <h1>Palm Berries Auto-Purchasing Bot</h1>
-        
-        <h2>Overview</h2>
-        <p>Palm Berries' Auto-Purchasing Bot is an advanced automation tool designed to streamline the inventory purchasing process for the company. By integrating with Google Sheets, the bot can automatically retrieve item links, names, and quantities, and then use that information to scrape relevant websites and purchase inventory. The project showcases a robust implementation of Selenium for web scraping and automation, combined with Django for authentication, ensuring a seamless and secure purchasing experience.</p>
+        <div class="content">
+            <h2>Overview</h2>
+            <p>Palm Berries' Auto-Purchasing Bot is an advanced automation tool designed to streamline the inventory purchasing process for the company. By integrating with Google Sheets, the bot can automatically retrieve item links, names, and quantities, and then use that information to scrape relevant websites and purchase inventory. The project showcases a robust implementation of Selenium for web scraping and automation, combined with Django for authentication, ensuring a seamless and secure purchasing experience.</p>
 
-        <h2>Key Features</h2>
-        <ol>
-            <li><strong>Google Sheets Integration:</strong> The bot directly pulls data from a Google Sheet, where the user can input item names, links, and required quantities. This allows for a flexible and user-friendly way to manage purchasing requirements without needing direct interaction with the bot's backend.</li>
-            <li><strong>Automated Web Scraping and Purchasing:</strong> Leveraging the power of Selenium, the bot navigates through websites, adds items to the cart, and completes purchases autonomously. The use of headless browsers allows these tasks to be performed efficiently in the background, without requiring a visible browser window.</li>
-            <li><strong>Handling Fractional Quantities:</strong> If the Google Sheet includes fractional quantities, the bot intelligently rounds these to the nearest whole number before making a purchase. This ensures that all orders are placed in practical, manageable quantities.</li>
-            <li><strong>Error Handling for Out-of-Stock Items:</strong> The bot includes comprehensive error handling for situations where items are out of stock. When the bot encounters an unavailable item, it logs the issue and immediately notifies the user, preventing unnecessary delays in the purchasing process.</li>
-            <li><strong>Secure Authentication with Django:</strong> User authentication is managed through Django, providing a secure and scalable way to handle credentials and ensure that only authorized users can initiate purchasing operations. The integration with Django also allows for easy expansion of user management features in the future.</li>
-            <li><strong>Notifications and Alerts:</strong> If the bot encounters an issue, such as an out-of-stock item or an error during the purchase process, it sends a notification to the user. This ensures that the purchasing team is always aware of the bot's actions and can intervene if necessary.</li>
-        </ol>
+            <h2>Key Features</h2>
+            <ol>
+                <li><strong>Google Sheets Integration:</strong> The bot directly pulls data from a Google Sheet, where the user can input item names, links, and required quantities. This allows for a flexible and user-friendly way to manage purchasing requirements without needing direct interaction with the bot's backend.</li>
+                <li><strong>Automated Web Scraping and Purchasing:</strong> Leveraging the power of Selenium, the bot navigates through websites, adds items to the cart, and completes purchases autonomously. The use of headless browsers allows these tasks to be performed efficiently in the background, without requiring a visible browser window.</li>
+                <li><strong>Handling Fractional Quantities:</strong> If the Google Sheet includes fractional quantities, the bot intelligently rounds these to the nearest whole number before making a purchase. This ensures that all orders are placed in practical, manageable quantities.</li>
+                <li><strong>Error Handling for Out-of-Stock Items:</strong> The bot includes comprehensive error handling for situations where items are out of stock. When the bot encounters an unavailable item, it logs the issue and immediately notifies the user, preventing unnecessary delays in the purchasing process.</li>
+                <li><strong>Secure Authentication with Django:</strong> User authentication is managed through Django, providing a secure and scalable way to handle credentials and ensure that only authorized users can initiate purchasing operations. The integration with Django also allows for easy expansion of user management features in the future.</li>
+                <li><strong>Notifications and Alerts:</strong> If the bot encounters an issue, such as an out-of-stock item or an error during the purchase process, it sends a notification to the user. This ensures that the purchasing team is always aware of the bot's actions and can intervene if necessary.</li>
+            </ol>
 
-        <h2>Technology Stack</h2>
-        <ol>
-            <li><strong>Selenium and Headless Browsers:</strong> For web automation and scraping.</li>
-            <li><strong>Beautiful Soup:</strong> For parsing HTML content when needed.</li>
-            <li><strong>Django:</strong> For secure user authentication.</li>
-            <li><strong>Google Sheets API:</strong> For retrieving and updating purchasing data.</li>
-        </ol>
+            <h2>Technology Stack</h2>
+            <ol>
+                <li><strong>Selenium and Headless Browsers:</strong> For web automation and scraping.</li>
+                <li><strong>Beautiful Soup:</strong> For parsing HTML content when needed.</li>
+                <li><strong>Django:</strong> For secure user authentication.</li>
+                <li><strong>Google Sheets API:</strong> For retrieving and updating purchasing data.</li>
+            </ol>
 
-        <h2>System Workflow</h2>
-        <ol>
-            <li>Data Retrieval: The bot reads item names, links, and quantities from a Google Sheet using the Google Sheets API.</li>
-            <li>Web Scraping: Using Selenium, the bot navigates to the provided links, adds the specified quantities to the cart, and proceeds to checkout.</li>
-            <li>Error Handling: If an item is out of stock or any other issue arises, the bot logs the error, rounds quantities as necessary, and sends a notification to the user.</li>
-            <li>Authentication: Secure login and authentication are handled through Django, ensuring that only authorized personnel can operate the bot.</li>
-            <li>Purchase Completion: Once the items are added to the cart and all checks are passed, the bot completes the purchase and updates the Google Sheet with the order status.</li>
-        </ol>
+            <h2>System Workflow</h2>
+            <ol>
+                <li>Data Retrieval: The bot reads item names, links, and quantities from a Google Sheet using the Google Sheets API.</li>
+                <li>Web Scraping: Using Selenium, the bot navigates to the provided links, adds the specified quantities to the cart, and proceeds to checkout.</li>
+                <li>Error Handling: If an item is out of stock or any other issue arises, the bot logs the error, rounds quantities as necessary, and sends a notification to the user.</li>
+                <li>Authentication: Secure login and authentication are handled through Django, ensuring that only authorized personnel can operate the bot.</li>
+                <li>Purchase Completion: Once the items are added to the cart and all checks are passed, the bot completes the purchase and updates the Google Sheet with the order status.</li>
+            </ol>
 
-        <h2>Conclusion</h2>
-        <p>The Palm Berries Auto-Purchasing Bot demonstrates a sophisticated understanding of web automation, data integration, and user authentication. By combining Selenium's powerful automation capabilities with Django's secure authentication and Beautiful Soup's parsing precision, this project offers a comprehensive solution for automating inventory purchases. This bot not only saves time and reduces manual effort but also enhances accuracy and responsiveness in the purchasing process, making it an invaluable tool for the Palm Berries team.</p>
+            <h2>Conclusion</h2>
+            <p>The Palm Berries Auto-Purchasing Bot demonstrates a sophisticated understanding of web automation, data integration, and user authentication. By combining Selenium's powerful automation capabilities with Django's secure authentication and Beautiful Soup's parsing precision, this project offers a comprehensive solution for automating inventory purchases. This bot not only saves time and reduces manual effort but also enhances accuracy and responsiveness in the purchasing process, making it an invaluable tool for the Palm Berries team.</p>
 
-        <a href="index.html" class="back-link">← Back to Portfolio</a>
+            <a href="index.html" class="back-link">← Back to Portfolio</a>
+        </div>
     </div>
+
+    <script>
+        function applyTheme() {
+            const currentTheme = localStorage.getItem('theme');
+            if (currentTheme === 'dark-mode') {
+                document.documentElement.classList.add('dark-mode');
+            } else {
+                document.documentElement.classList.remove('dark-mode');
+            }
+        }
+
+        // Apply theme on page load
+        applyTheme();
+
+        // Recheck the theme periodically
+        setInterval(applyTheme, 1000);
+    </script>
 </body>
 </html>
