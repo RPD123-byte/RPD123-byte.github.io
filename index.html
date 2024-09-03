@@ -4,76 +4,146 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
-    
         :root {
-            --primary-color: #2c3e50;
-            --secondary-color: #3498db;
+            --primary-color: #3498db;
+            --secondary-color: #2c3e50;
             --accent-color: #e74c3c;
             --background-color: #f0f3f5;
             --card-color: #ffffff;
-            --text-color: #333;
+            --text-color: #333333;
             --shadow-color: rgba(0, 0, 0, 0.1);
+            --hover-color-light: #2c3e50; /* Light blue for light mode */
+            --hover-color-dark: #e74c3c;  /* Red for dark mode */
         }
-    
+
+        .dark-mode {
+            --primary-color: #3498db;
+            --secondary-color: #34495e;
+            --accent-color: #e74c3c;
+            --background-color: #1a1a1a;
+            --card-color: #2c2c2c;
+            --text-color: #f0f0f0;
+            --shadow-color: rgba(255, 255, 255, 0.1);
+        }
+
         body {
-            font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Poppins', sans-serif;
             line-height: 1.6;
             margin: 0;
             padding: 0;
             background-color: var(--background-color);
             color: var(--text-color);
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
-    
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
         }
-    
+
         header {
-            background-color: var(--primary-color);
+            background-color: var(--secondary-color);
             color: white;
             text-align: center;
-            padding: 3rem 0;
-            margin-bottom: 3rem;
+            padding: 2rem 0;
+            margin-bottom: 2rem;
             position: relative;
-            overflow: hidden;
         }
-    
-        header::before {
-            content: "";
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(45deg, var(--secondary-color), var(--accent-color));
-            animation: rotate 20s linear infinite;
-            opacity: 0.1;
-            z-index: 1;
-        }
-    
-        @keyframes rotate {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-    
+
         h1 {
             margin: 0;
             font-size: 2.5rem;
             font-weight: 600;
-            position: relative;
-            z-index: 2;
         }
-    
+
+        .theme-switch-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 1rem;
+        }
+
+        .theme-switch {
+            display: inline-block;
+            height: 34px;
+            position: relative;
+            width: 60px;
+        }
+
+        .theme-switch input {
+            display: none;
+        }
+
+        .slider {
+            background-color: #bde0fe; /* Light blue for light mode */
+            bottom: 0;
+            cursor: pointer;
+            left: 0;
+            position: absolute;
+            right: 0;
+            top: 0;
+            transition: .4s;
+            border-radius: 34px;
+        }
+
+        .slider:before {
+            background-color: var(--primary-color);
+            bottom: 4px;
+            content: "";
+            height: 26px;
+            left: 4px;
+            position: absolute;
+            transition: .4s;
+            width: 26px;
+            border-radius: 50%;
+        }
+
+        input:checked + .slider {
+            background-color: var(--accent-color);
+        }
+
+        input:checked + .slider:before {
+            transform: translateX(26px);
+            background-color: var(--secondary-color);
+        }
+
+        .slider .fa-sun {
+            color: #f1c40f;
+            position: absolute;
+            left: 8px;
+            top: 8px;
+            transition: .4s;
+            font-size: 18px;
+        }
+
+        .slider .fa-moon {
+            color: #f1c40f;
+            position: absolute;
+            right: 8px;
+            top: 8px;
+            transition: .4s;
+            font-size: 18px;
+            opacity: 0;
+        }
+
+        input:checked + .slider .fa-sun {
+            opacity: 0;
+        }
+
+        input:checked + .slider .fa-moon {
+            opacity: 1;
+        }
+
         .grid-container {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 30px;
         }
-    
+
         .grid-item {
             background-color: var(--card-color);
             border-radius: 15px;
@@ -81,27 +151,27 @@
             overflow: hidden;
             transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
         }
-    
+
         .grid-item:hover {
             transform: translateY(-10px);
             box-shadow: 0 15px 30px var(--shadow-color);
         }
-    
+
         .grid-item img {
             width: 100%;
             height: 200px;
             object-fit: cover;
             transition: transform 0.3s ease-in-out;
         }
-    
+
         .grid-item:hover img {
             transform: scale(1.1);
         }
-    
+
         .grid-item-content {
             padding: 20px;
         }
-    
+
         .grid-item h2 {
             margin-top: 0;
             margin-bottom: 10px;
@@ -109,31 +179,39 @@
             font-size: 1.5rem;
             font-weight: 600;
         }
-    
+
         .grid-item p {
             margin-bottom: 15px;
             color: var(--text-color);
             font-size: 0.9rem;
         }
-    
+
         .grid-item a {
-            color: var(--secondary-color);
+            color: var(--primary-color);
             text-decoration: none;
             font-weight: bold;
-            display: inline-block;
             transition: color 0.3s ease-in-out;
         }
-    
+
         .grid-item a:hover {
-            color: var(--accent-color);
+            color: var(--hover-color-light);
         }
-    
+
+        .dark-mode .grid-item a:hover {
+            color: var(--hover-color-dark);
+        }
+
+        /* Optional: Adjust the initial link color for better contrast in dark mode */
+        .dark-mode .grid-item a {
+            color: var(--primary-color);
+        }
+
         @media (max-width: 768px) {
             .grid-container {
                 grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
             }
         }
-    
+
         @media (max-width: 480px) {
             .grid-container {
                 grid-template-columns: 1fr;
@@ -148,6 +226,15 @@
     <header>
         <div class="container">
             <h1>Portfolio</h1>
+            <div class="theme-switch-wrapper">
+                <label class="theme-switch" for="checkbox">
+                    <input type="checkbox" id="checkbox" />
+                    <div class="slider round">
+                        <i class="fas fa-sun"></i>
+                        <i class="fas fa-moon"></i>
+                    </div>
+                </label>
+            </div>
         </div>
     </header>
     <main class="container">
@@ -263,5 +350,28 @@
             </div>
         </div>
     </main>
+    <script>
+        const toggleSwitch = document.querySelector('.theme-switch input[type="checkbox"]');
+        const currentTheme = localStorage.getItem('theme');
+
+        if (currentTheme) {
+            document.documentElement.setAttribute('class', currentTheme);
+            if (currentTheme === 'dark-mode') {
+                toggleSwitch.checked = true;
+            }
+        }
+
+        function switchTheme(e) {
+            if (e.target.checked) {
+                document.documentElement.setAttribute('class', 'dark-mode');
+                localStorage.setItem('theme', 'dark-mode');
+            } else {
+                document.documentElement.setAttribute('class', 'light-mode');
+                localStorage.setItem('theme', 'light-mode');
+            }    
+        }
+
+        toggleSwitch.addEventListener('change', switchTheme, false);
+    </script>
 </body>
 </html>
