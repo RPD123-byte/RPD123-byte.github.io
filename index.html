@@ -10,13 +10,13 @@
         :root {
             --primary-color: #3498db;
             --secondary-color: #2c3e50;
-            --accent-color: #e74c3c;
+            --accent-color: #f39c12;     /* New teal color, replacing red */
             --background-color: #f0f3f5;
             --card-color: #ffffff;
             --text-color: #333333;
             --shadow-color: rgba(0, 0, 0, 0.1);
-            --hover-color-light: #2c3e50; /* Light blue for light mode */
-            --hover-color-dark: #e74c3c;  /* Red for dark mode */
+            --hover-color-light: #f39c12;
+            --hover-color-dark: #f39c12;
         }
 
         .dark-mode {
@@ -45,26 +45,41 @@
             padding: 20px;
         }
 
+        /* Header Styles */
         header {
-            background-color: var(--secondary-color);
+            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
             color: white;
-            text-align: center;
-            padding: 2rem 0;
+            padding: 3rem 0;
             margin-bottom: 2rem;
             position: relative;
+            overflow: hidden;
         }
 
-        h1 {
-            margin: 0;
-            font-size: 2.5rem;
+        .header-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header-title {
+            font-size: 3rem;
             font-weight: 600;
+            margin: 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header-subtitle {
+            font-size: 1.2rem;
+            margin-top: 0.5rem;
+            opacity: 0.8;
         }
 
         .theme-switch-wrapper {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-top: 1rem;
+            margin-top: 1.5rem;
         }
 
         .theme-switch {
@@ -79,7 +94,7 @@
         }
 
         .slider {
-            background-color: #bde0fe; /* Light blue for light mode */
+            background-color: rgba(255, 255, 255, 0.3);
             bottom: 0;
             cursor: pointer;
             left: 0;
@@ -91,7 +106,7 @@
         }
 
         .slider:before {
-            background-color: var(--primary-color);
+            background-color: white;
             bottom: 4px;
             content: "";
             height: 26px;
@@ -103,30 +118,27 @@
         }
 
         input:checked + .slider {
-            background-color: var(--accent-color);
+            background-color: rgba(0, 0, 0, 0.3);
         }
 
         input:checked + .slider:before {
             transform: translateX(26px);
-            background-color: var(--secondary-color);
+        }
+
+        .slider .fa-sun, .slider .fa-moon {
+            color: #f1c40f;
+            position: absolute;
+            top: 8px;
+            transition: .4s;
+            font-size: 18px;
         }
 
         .slider .fa-sun {
-            color: #f1c40f;
-            position: absolute;
             left: 8px;
-            top: 8px;
-            transition: .4s;
-            font-size: 18px;
         }
 
         .slider .fa-moon {
-            color: #f1c40f;
-            position: absolute;
             right: 8px;
-            top: 8px;
-            transition: .4s;
-            font-size: 18px;
             opacity: 0;
         }
 
@@ -138,6 +150,26 @@
             opacity: 1;
         }
 
+        .header-decoration {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            z-index: 0;
+        }
+
+        .header-decoration.left {
+            top: -150px;
+            left: -150px;
+        }
+
+        .header-decoration.right {
+            bottom: -150px;
+            right: -150px;
+        }
+
+        /* Grid and Card Styles */
         .grid-container {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -201,31 +233,44 @@
             color: var(--hover-color-dark);
         }
 
-        /* Optional: Adjust the initial link color for better contrast in dark mode */
-        .dark-mode .grid-item a {
-            color: var(--primary-color);
-        }
-
+        /* Responsive Styles */
         @media (max-width: 768px) {
+            .header-title {
+                font-size: 2.5rem;
+            }
+
+            .header-subtitle {
+                font-size: 1rem;
+            }
+
             .grid-container {
                 grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
             }
         }
 
         @media (max-width: 480px) {
+            .header-title {
+                font-size: 2rem;
+            }
+
+            .header-subtitle {
+                font-size: 0.9rem;
+            }
+
             .grid-container {
                 grid-template-columns: 1fr;
-            }
-            h1 {
-                font-size: 2rem;
             }
         }
     </style>
 </head>
 <body>
     <header>
-        <div class="container">
-            <h1>Portfolio</h1>
+        <div class="header-decoration"></div>
+        <div class="header-content">
+            <div>
+                <h1 class="header-title">Portfolio</h1>
+                <p class="header-subtitle">Projects in AI, ML, Full Stack Web Dev, and Quant Finance</p>
+            </div>
             <div class="theme-switch-wrapper">
                 <label class="theme-switch" for="checkbox">
                     <input type="checkbox" id="checkbox" />
